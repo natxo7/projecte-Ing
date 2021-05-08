@@ -24,6 +24,22 @@
                 <asp:Button ID="btnInitiateSesion" runat="server" Text="Login" OnClick="btnInitiateSesion_Click" />
             </div>
         </div>
+        <br />
+          <div class="groupRecepcionist">
+            <div class="usernameRec">
+                <asp:Label ID="Label3" runat="server" Text="Label">Recepcionist:</asp:Label>
+                <br />
+                <asp:TextBox ID="txtBoxNameRecepcionist" runat="server"></asp:TextBox>
+            </div>
+            <div class="passwordRec">
+                <asp:Label ID="Label4" runat="server" Text="Label">Password:</asp:Label>
+                <br />
+                <asp:TextBox ID="txtBoxPassRec" runat="server"></asp:TextBox>
+            </div>
+            <div class="btn_loginRec">
+                <asp:Button ID="loginRecep" runat="server" Text="Recepcionist" OnClick="recepcionistSesion_Click" />
+            </div>
+        </div>
     </form>
 </body>
 </html>

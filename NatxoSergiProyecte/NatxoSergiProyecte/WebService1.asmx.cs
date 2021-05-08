@@ -68,6 +68,92 @@ namespace NatxoSergiProyecte
             }
             return dt;
         }
-     
+        [WebMethod]
+        public DataTable initiateSesionRecepcionist(string user, string pass)
+        {
+
+            DataTable dt = new DataTable();
+            using (MD5 md5Hash = MD5.Create())
+            {
+                byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(pass));
+                pass = BitConverter.ToString(data).Replace("-", string.Empty);
+            }
+            SQLiteConnection conn = new SQLiteConnection("Data Source=" + DBpath + ";Version=3;");
+
+            conn.Open();
+            using (conn)
+            {
+                SQLiteCommand comm = new SQLiteCommand("SELECT * FROM Recepcionist WHERE name ='" + user + "'", conn);
+                SQLiteDataReader reader = comm.ExecuteReader();
+                dt.Load(reader);
+                reader.Close();
+            }
+            return dt;
+        }
+        [WebMethod]
+        public DataTable dataClient(int id)
+        {
+
+            DataTable dt = new DataTable();
+         
+            SQLiteConnection conn = new SQLiteConnection("Data Source=" + DBpath + ";Version=3;");
+
+            conn.Open();
+            using (conn)
+            {
+                SQLiteCommand comm = new SQLiteCommand("SELECT * FROM Client WHERE id ='" + id + "'", conn);
+                SQLiteDataReader reader = comm.ExecuteReader();
+                dt.Load(reader);
+                reader.Close();
+            }
+            return dt;
+        }
+        [WebMethod]
+        public DataTable dataRecepcionist(int id)
+        {
+
+            DataTable dt = new DataTable();
+
+            SQLiteConnection conn = new SQLiteConnection("Data Source=" + DBpath + ";Version=3;");
+
+            conn.Open();
+            using (conn)
+            {
+                SQLiteCommand comm = new SQLiteCommand("SELECT * FROM Recepcionist WHERE id ='" + id + "'", conn);
+                SQLiteDataReader reader = comm.ExecuteReader();
+                dt.Load(reader);
+                reader.Close();
+            }
+            return dt;
+        }
+      
+
+        [WebMethod]
+        public DataTable dataReserve(int id,int role)
+        {
+
+            DataTable dt = new DataTable();
+
+            SQLiteConnection conn = new SQLiteConnection("Data Source=" + DBpath + ";Version=3;");
+
+            conn.Open();
+            using (conn)
+            {
+                SQLiteCommand comm;
+                if (role == 0) {
+                   comm= new SQLiteCommand("SELECT * FROM reserve WHERE idClient ='" + id + "'", conn);
+                }
+                else
+                {
+                    comm = new SQLiteCommand("SELECT * FROM reserve WHERE idRecepcionist ='" + id + "'", conn);
+                }
+                SQLiteDataReader reader = comm.ExecuteReader();
+                dt.Load(reader);
+                reader.Close();
+            }
+            return dt;
+        }
+        
+   
     }
 }

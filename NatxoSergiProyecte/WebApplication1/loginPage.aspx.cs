@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using System.Web.Security;
 using WebApplication1.localhost;
 
 namespace WebApplication1
@@ -24,8 +23,67 @@ namespace WebApplication1
         {
             string user = txtBoxName.Text;
             string pass = txtBoxPass.Text;
-            dt= ws.initiateSesion(user, pass);
-            Response.Redirect("./clientPage.aspx");
+
+
+            if (user.Length == 0 || pass.Length == 0)
+            {
+                return;
+            }
+            
+            dt = ws.initiateSesion(user, pass);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                if (dr["name"].ToString() == user)
+                {
+                   
+                    string passHash = dr["password"].ToString().ToUpper();
+                    if (pass.ToString().ToUpper() == passHash)
+                    { 
+                       Response.Redirect("./clientPage.aspx?id="+ dr["id"].ToString());
+
+                    }
+                }
+            }
+        }
+
+        protected void recepcionistSesion_Click(object sender, EventArgs e)
+        {
+            string user = txtBoxNameRecepcionist.Text;
+            string pass = txtBoxPassRec.Text;
+
+
+            if (user.Length == 0 || pass.Length == 0)
+            {
+                return;
+            }
+
+            dt = ws.initiateSesionRecepcionist(user, pass);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                if (dr["name"].ToString() == user)
+                {
+
+                    string passHash = dr["password"].ToString().ToUpper();
+                    if (pass.ToString().ToUpper() == passHash)
+                    {
+                        FormsAuthentication.SetAuthCookie(user, true);
+
+                        if (dr["rol"].ToString() == "1")
+                        {
+
+                            //Response.Redirect("./recepcionistPage.aspx");
+                            //tiene que llevar a una admin en caso de crearla
+                        }
+                        else
+                        {
+                            Response.Redirect("./recepcionistPage.aspx?id="+ dr["id"].ToString());
+
+                        }
+                    }
+                }
+            }
         }
     }
 }

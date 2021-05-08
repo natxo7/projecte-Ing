@@ -55,6 +55,92 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="initiateSesionRecepcionist">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pass" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="initiateSesionRecepcionistResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="initiateSesionRecepcionistResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="dataClient">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="dataClientResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dataClientResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="dataRecepcionist">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="dataRecepcionistResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dataRecepcionistResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="dataReserve">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="role" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="dataReserveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dataReserveResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="HelloWorldSoapIn">
@@ -75,6 +161,30 @@
   <wsdl:message name="initiateSesionSoapOut">
     <wsdl:part name="parameters" element="tns:initiateSesionResponse" />
   </wsdl:message>
+  <wsdl:message name="initiateSesionRecepcionistSoapIn">
+    <wsdl:part name="parameters" element="tns:initiateSesionRecepcionist" />
+  </wsdl:message>
+  <wsdl:message name="initiateSesionRecepcionistSoapOut">
+    <wsdl:part name="parameters" element="tns:initiateSesionRecepcionistResponse" />
+  </wsdl:message>
+  <wsdl:message name="dataClientSoapIn">
+    <wsdl:part name="parameters" element="tns:dataClient" />
+  </wsdl:message>
+  <wsdl:message name="dataClientSoapOut">
+    <wsdl:part name="parameters" element="tns:dataClientResponse" />
+  </wsdl:message>
+  <wsdl:message name="dataRecepcionistSoapIn">
+    <wsdl:part name="parameters" element="tns:dataRecepcionist" />
+  </wsdl:message>
+  <wsdl:message name="dataRecepcionistSoapOut">
+    <wsdl:part name="parameters" element="tns:dataRecepcionistResponse" />
+  </wsdl:message>
+  <wsdl:message name="dataReserveSoapIn">
+    <wsdl:part name="parameters" element="tns:dataReserve" />
+  </wsdl:message>
+  <wsdl:message name="dataReserveSoapOut">
+    <wsdl:part name="parameters" element="tns:dataReserveResponse" />
+  </wsdl:message>
   <wsdl:portType name="WebService1Soap">
     <wsdl:operation name="HelloWorld">
       <wsdl:input message="tns:HelloWorldSoapIn" />
@@ -87,6 +197,22 @@
     <wsdl:operation name="initiateSesion">
       <wsdl:input message="tns:initiateSesionSoapIn" />
       <wsdl:output message="tns:initiateSesionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="initiateSesionRecepcionist">
+      <wsdl:input message="tns:initiateSesionRecepcionistSoapIn" />
+      <wsdl:output message="tns:initiateSesionRecepcionistSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="dataClient">
+      <wsdl:input message="tns:dataClientSoapIn" />
+      <wsdl:output message="tns:dataClientSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="dataRecepcionist">
+      <wsdl:input message="tns:dataRecepcionistSoapIn" />
+      <wsdl:output message="tns:dataRecepcionistSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="dataReserve">
+      <wsdl:input message="tns:dataReserveSoapIn" />
+      <wsdl:output message="tns:dataReserveSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WebService1Soap" type="tns:WebService1Soap">
@@ -118,6 +244,42 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="initiateSesionRecepcionist">
+      <soap:operation soapAction="http://tempuri.org/initiateSesionRecepcionist" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dataClient">
+      <soap:operation soapAction="http://tempuri.org/dataClient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dataRecepcionist">
+      <soap:operation soapAction="http://tempuri.org/dataRecepcionist" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dataReserve">
+      <soap:operation soapAction="http://tempuri.org/dataReserve" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="WebService1Soap12" type="tns:WebService1Soap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -141,6 +303,42 @@
     </wsdl:operation>
     <wsdl:operation name="initiateSesion">
       <soap12:operation soapAction="http://tempuri.org/initiateSesion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="initiateSesionRecepcionist">
+      <soap12:operation soapAction="http://tempuri.org/initiateSesionRecepcionist" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dataClient">
+      <soap12:operation soapAction="http://tempuri.org/dataClient" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dataRecepcionist">
+      <soap12:operation soapAction="http://tempuri.org/dataRecepcionist" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="dataReserve">
+      <soap12:operation soapAction="http://tempuri.org/dataReserve" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

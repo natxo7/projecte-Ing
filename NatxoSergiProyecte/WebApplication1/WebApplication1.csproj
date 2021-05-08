@@ -71,16 +71,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="clientPage.aspx" />
+    <Content Include="recepcionistPage.aspx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Content Include="home.aspx" />
     <Content Include="loginPage.aspx" />
-    <Content Include="Web References\localhost\Reference.map">
+    <None Include="Web References\localhost\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
+    </None>
     <None Include="Web References\localhost\WebService1.disco" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -111,6 +112,13 @@
     </Compile>
     <Compile Include="clientPage.aspx.designer.cs">
       <DependentUpon>clientPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="recepcionistPage.aspx.cs">
+      <DependentUpon>recepcionistPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="recepcionistPage.aspx.designer.cs">
+      <DependentUpon>recepcionistPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Web References\localhost\Reference.cs">
       <AutoGen>True</AutoGen>

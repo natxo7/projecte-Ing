@@ -36,6 +36,14 @@ namespace WebApplication1.localhost {
         
         private System.Threading.SendOrPostCallback initiateSesionOperationCompleted;
         
+        private System.Threading.SendOrPostCallback initiateSesionRecepcionistOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback dataClientOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback dataRecepcionistOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback dataReserveOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -82,6 +90,18 @@ namespace WebApplication1.localhost {
         
         /// <remarks/>
         public event initiateSesionCompletedEventHandler initiateSesionCompleted;
+        
+        /// <remarks/>
+        public event initiateSesionRecepcionistCompletedEventHandler initiateSesionRecepcionistCompleted;
+        
+        /// <remarks/>
+        public event dataClientCompletedEventHandler dataClientCompleted;
+        
+        /// <remarks/>
+        public event dataRecepcionistCompletedEventHandler dataRecepcionistCompleted;
+        
+        /// <remarks/>
+        public event dataReserveCompletedEventHandler dataReserveCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/HelloWorld", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -171,6 +191,126 @@ namespace WebApplication1.localhost {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/initiateSesionRecepcionist", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataTable initiateSesionRecepcionist(string user, string pass) {
+            object[] results = this.Invoke("initiateSesionRecepcionist", new object[] {
+                        user,
+                        pass});
+            return ((System.Data.DataTable)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void initiateSesionRecepcionistAsync(string user, string pass) {
+            this.initiateSesionRecepcionistAsync(user, pass, null);
+        }
+        
+        /// <remarks/>
+        public void initiateSesionRecepcionistAsync(string user, string pass, object userState) {
+            if ((this.initiateSesionRecepcionistOperationCompleted == null)) {
+                this.initiateSesionRecepcionistOperationCompleted = new System.Threading.SendOrPostCallback(this.OninitiateSesionRecepcionistOperationCompleted);
+            }
+            this.InvokeAsync("initiateSesionRecepcionist", new object[] {
+                        user,
+                        pass}, this.initiateSesionRecepcionistOperationCompleted, userState);
+        }
+        
+        private void OninitiateSesionRecepcionistOperationCompleted(object arg) {
+            if ((this.initiateSesionRecepcionistCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.initiateSesionRecepcionistCompleted(this, new initiateSesionRecepcionistCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/dataClient", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataTable dataClient(int id) {
+            object[] results = this.Invoke("dataClient", new object[] {
+                        id});
+            return ((System.Data.DataTable)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void dataClientAsync(int id) {
+            this.dataClientAsync(id, null);
+        }
+        
+        /// <remarks/>
+        public void dataClientAsync(int id, object userState) {
+            if ((this.dataClientOperationCompleted == null)) {
+                this.dataClientOperationCompleted = new System.Threading.SendOrPostCallback(this.OndataClientOperationCompleted);
+            }
+            this.InvokeAsync("dataClient", new object[] {
+                        id}, this.dataClientOperationCompleted, userState);
+        }
+        
+        private void OndataClientOperationCompleted(object arg) {
+            if ((this.dataClientCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.dataClientCompleted(this, new dataClientCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/dataRecepcionist", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataTable dataRecepcionist(int id) {
+            object[] results = this.Invoke("dataRecepcionist", new object[] {
+                        id});
+            return ((System.Data.DataTable)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void dataRecepcionistAsync(int id) {
+            this.dataRecepcionistAsync(id, null);
+        }
+        
+        /// <remarks/>
+        public void dataRecepcionistAsync(int id, object userState) {
+            if ((this.dataRecepcionistOperationCompleted == null)) {
+                this.dataRecepcionistOperationCompleted = new System.Threading.SendOrPostCallback(this.OndataRecepcionistOperationCompleted);
+            }
+            this.InvokeAsync("dataRecepcionist", new object[] {
+                        id}, this.dataRecepcionistOperationCompleted, userState);
+        }
+        
+        private void OndataRecepcionistOperationCompleted(object arg) {
+            if ((this.dataRecepcionistCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.dataRecepcionistCompleted(this, new dataRecepcionistCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/dataReserve", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataTable dataReserve(int id, int role) {
+            object[] results = this.Invoke("dataReserve", new object[] {
+                        id,
+                        role});
+            return ((System.Data.DataTable)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void dataReserveAsync(int id, int role) {
+            this.dataReserveAsync(id, role, null);
+        }
+        
+        /// <remarks/>
+        public void dataReserveAsync(int id, int role, object userState) {
+            if ((this.dataReserveOperationCompleted == null)) {
+                this.dataReserveOperationCompleted = new System.Threading.SendOrPostCallback(this.OndataReserveOperationCompleted);
+            }
+            this.InvokeAsync("dataReserve", new object[] {
+                        id,
+                        role}, this.dataReserveOperationCompleted, userState);
+        }
+        
+        private void OndataReserveOperationCompleted(object arg) {
+            if ((this.dataReserveCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.dataReserveCompleted(this, new dataReserveCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -254,6 +394,110 @@ namespace WebApplication1.localhost {
         private object[] results;
         
         internal initiateSesionCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataTable Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataTable)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void initiateSesionRecepcionistCompletedEventHandler(object sender, initiateSesionRecepcionistCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class initiateSesionRecepcionistCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal initiateSesionRecepcionistCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataTable Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataTable)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void dataClientCompletedEventHandler(object sender, dataClientCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class dataClientCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal dataClientCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataTable Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataTable)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void dataRecepcionistCompletedEventHandler(object sender, dataRecepcionistCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class dataRecepcionistCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal dataRecepcionistCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataTable Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataTable)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void dataReserveCompletedEventHandler(object sender, dataReserveCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class dataReserveCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal dataReserveCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
