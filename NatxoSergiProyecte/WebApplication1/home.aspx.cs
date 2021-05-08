@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using WebApplication1.localhost;
 using System.Data;
 using System.Data.SQLite;
+
 namespace WebApplication1
 {
     public partial class home : System.Web.UI.Page
@@ -31,6 +32,12 @@ namespace WebApplication1
             {
                 TextBox2.Text = dr["name"].ToString();
             }
+        }
+      
+        protected void goLogin(object sender, EventArgs e)
+        {
+            
+            Response.Redirect("./loginPage.aspx");
         }
     }
 }
