@@ -153,7 +153,27 @@ namespace NatxoSergiProyecte
             }
             return dt;
         }
-        
-   
+
+        [WebMethod]
+        public void deleteReserve(int id)
+        {
+            //DataTable dt = new DataTable();
+
+            SQLiteConnection conn = new SQLiteConnection("Data Source=" + DBpath + ";Version=3;");
+
+            conn.Open();
+            using (conn)
+            {
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter();
+
+                SQLiteCommand comm = new SQLiteCommand("DELETE  FROM Reserve WHERE id ='" + id + "'", conn);
+                
+                adapter.DeleteCommand = comm;
+                adapter.DeleteCommand.ExecuteNonQuery();
+                
+            }
+        }
+
+
     }
 }

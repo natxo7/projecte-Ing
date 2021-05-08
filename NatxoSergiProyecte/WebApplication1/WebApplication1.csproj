@@ -78,10 +78,10 @@
     </None>
     <Content Include="home.aspx" />
     <Content Include="loginPage.aspx" />
-    <None Include="Web References\localhost\Reference.map">
+    <Content Include="Web References\localhost\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
+    </Content>
     <None Include="Web References\localhost\WebService1.disco" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -120,6 +120,7 @@
     <Compile Include="recepcionistPage.aspx.designer.cs">
       <DependentUpon>recepcionistPage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Reserve.cs" />
     <Compile Include="Web References\localhost\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -143,10 +144,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="https://localhost:44372/WebService1.asmx">
+    <WebReferenceUrl Include="https://localhost:44372/WebService1.asmx%3fop=deleteReserve">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\localhost\</RelPath>
-      <UpdateFromURL>https://localhost:44372/WebService1.asmx</UpdateFromURL>
+      <UpdateFromURL>https://localhost:44372/WebService1.asmx%3fop=deleteReserve</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

@@ -17,9 +17,14 @@
          <br />
           <asp:Label ID="Label5" runat="server" Text="">dato apellido</asp:Label>
          <br />
-          <asp:ListBox ID="ListBox1" runat="server"></asp:ListBox>
+          <asp:ListBox ID="ListBox1" runat="server" Height="205px" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged" Width="666px"></asp:ListBox>
+           
          <br />
          <br />
+        <asp:Button ID="btnAddReserve" runat="server" Text="Add Reserve" OnClick="btnAddReserve_Click" />
+        <asp:Button ID="btnDeleteReserve" runat="server" Text="Delete Reserve" OnClick="btnDeleteReserve_Click" />
+        <asp:TextBox ID="deleteTxBox" runat="server" OnTextChanged="deleteTxBox_TextChanged"></asp:TextBox>
+        <asp:Button ID="btnModifyReserve" runat="server" Text="Modify Reserve" OnClick="btnModifyReserve_Click" />
          <br />
          <br />
          <br />
