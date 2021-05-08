@@ -32,7 +32,6 @@ namespace WebApplication1
 
             }
 
-
             dt = ws.dataReserve(Int32.Parse(id), 1);
             String reserve;
 
