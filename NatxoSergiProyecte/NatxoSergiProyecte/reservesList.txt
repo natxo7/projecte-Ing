@@ -1,0 +1,1 @@
+[{"TypeRoom":"Pequeña","IdRecepcionist":2,"IdnClient":1234,"ArrivalDate":"90","FinishDate":"90","IdReserve":2}]

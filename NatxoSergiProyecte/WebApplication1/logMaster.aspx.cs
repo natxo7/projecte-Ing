@@ -28,8 +28,12 @@ namespace WebApplication1
             {
                 return;
             }
+            else
+            {
+                dt = ws.initiateSesion(user, pass);
+            }
 
-            dt = ws.initiateSesion(user, pass);
+            
 
             foreach (DataRow dr in dt.Rows)
             {

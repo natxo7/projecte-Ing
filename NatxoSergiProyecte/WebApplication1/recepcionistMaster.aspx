@@ -54,5 +54,7 @@
         <asp:TextBox ID="modTypeRoom" runat="server"></asp:TextBox>
         <br />
         <br />
+
+        <asp:Button ID="exportBtn" runat="server" Text="EXPORT RESERVES IN JSON" OnClick="exportBtn_Click" />
          </div>   
 </asp:Content>

@@ -23,7 +23,7 @@
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
             <div id="footer">
-                <div class="footer-copyright text-center py-3">
+                <div >
             <p class="info">
                 Terms | Politics | Cookies
             </p>
