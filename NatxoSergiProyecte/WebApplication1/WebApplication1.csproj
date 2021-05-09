@@ -71,25 +71,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="clientMaster.aspx" />
-    <Content Include="clientPage.aspx" />
     <Content Include="homeMaster.aspx" />
     <Content Include="img\back.jpg" />
     <Content Include="img\fondo.jpg" />
     <Content Include="logMaster.aspx" />
     <Content Include="recepcionistMaster.aspx" />
-    <Content Include="recepcionistPage.aspx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Content Include="home.aspx" />
-    <Content Include="loginPage.aspx" />
     <Content Include="css\StyleSheet1.css" />
+    <Content Include="Site1.Master" />
     <Content Include="Web References\localhost\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
-    <Content Include="Site1.Master" />
     <None Include="Web References\localhost\WebService1.disco" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -101,26 +97,12 @@
     <Compile Include="clientMaster.aspx.designer.cs">
       <DependentUpon>clientMaster.aspx</DependentUpon>
     </Compile>
-    <Compile Include="home.aspx.cs">
-      <DependentUpon>home.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="home.aspx.designer.cs">
-      <DependentUpon>home.aspx</DependentUpon>
-    </Compile>
     <Compile Include="homeMaster.aspx.cs">
       <DependentUpon>homeMaster.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="homeMaster.aspx.designer.cs">
       <DependentUpon>homeMaster.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="loginPage.aspx.cs">
-      <DependentUpon>loginPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="loginPage.aspx.designer.cs">
-      <DependentUpon>loginPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="logMaster.aspx.cs">
       <DependentUpon>logMaster.aspx</DependentUpon>
@@ -135,26 +117,12 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="clientPage.aspx.cs">
-      <DependentUpon>clientPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="clientPage.aspx.designer.cs">
-      <DependentUpon>clientPage.aspx</DependentUpon>
-    </Compile>
     <Compile Include="recepcionistMaster.aspx.cs">
       <DependentUpon>recepcionistMaster.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="recepcionistMaster.aspx.designer.cs">
       <DependentUpon>recepcionistMaster.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="recepcionistPage.aspx.cs">
-      <DependentUpon>recepcionistPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="recepcionistPage.aspx.designer.cs">
-      <DependentUpon>recepcionistPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Reserve.cs" />
     <Compile Include="Site1.Master.cs">

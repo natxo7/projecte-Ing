@@ -15,16 +15,16 @@
          <br />
          <br />
         <asp:Button ID="btnAddReserve" runat="server" Text="Add Reserve" OnClick="btnAddReserve_Click" />
-        <asp:Button ID="btnAddClient" runat="server" Text="Add Client" OnClick="btnAddClient_Click" style="height: 29px"  />
+        
 
         <asp:Button ID="btnDeleteReserve" runat="server" Text="Delete Reserve" OnClick="btnDeleteReserve_Click" />
         <asp:TextBox ID="deleteTxBox" runat="server" OnTextChanged="deleteTxBox_TextChanged"></asp:TextBox>
-        <asp:Button ID="btnModifyReserve" runat="server" Text="Modify Reserve" OnClick="btnModifyReserve_Click" />
+        
          <br />
          <br />
          <br />
         
-        <asp:Label ID="Label6" runat="server" Text="">Apellidos del recepcionista</asp:Label>
+        
         <br />
         <br />
         <asp:TextBox ID="clientName" runat="server"></asp:TextBox>
@@ -39,5 +39,19 @@
 
         <br />
         <br />
-        </div>   
+        <br />
+        <br />
+
+
+        <asp:Button ID="btnModifyReserve" runat="server" Text="Modify Reserve" OnClick="btnModifyReserve_Click" />
+        <asp:TextBox ID="inputModify" runat="server"></asp:TextBox>
+        <asp:Button ID="clearModify" runat="server" Text="Clear" OnClick="clearModify_Click"  />
+        <br />
+        
+        <asp:TextBox ID="modArrivalDate" runat="server"></asp:TextBox>
+        <asp:TextBox ID="modFinishDate" runat="server"></asp:TextBox>
+        <asp:TextBox ID="modTypeRoom" runat="server"></asp:TextBox>
+        <br />
+        <br />
+         </div>   
 </asp:Content>

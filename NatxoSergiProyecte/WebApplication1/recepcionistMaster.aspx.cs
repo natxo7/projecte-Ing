@@ -88,8 +88,11 @@ namespace WebApplication1
                     idClient = Int32.Parse(dr["id"].ToString());
                 }
             }
-
             ws.addReserve(Int32.Parse(this.id), idClient, arrivaldate, finishDate, typeRoom);
+            
+            
+
+            
 
 
         }
@@ -135,28 +138,24 @@ namespace WebApplication1
 
         protected void btnModifyReserve_Click(object sender, EventArgs e)
         {
+            int idReserve = Int32.Parse(inputModify.Text);
+            int idClient = -1;
+            int idRecepcionist = -1;
+            dt = ws.dataReserve(Int32.Parse(id), 1);
+            foreach(DataRow dr in dt.Rows)
+            {
+                 idClient = Int32.Parse(dr["idClient"].ToString());
+                 idRecepcionist = Int32.Parse(dr["idRecepcionist"].ToString());
+            }
+            ws.deleteReserve(Int32.Parse(idReserve.ToString()));
+            ws.addReserve(idRecepcionist, idClient, modArrivalDate.Text, modFinishDate.Text, modTypeRoom.Text);
 
         }
 
         protected void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            /*
-            foreach(Reserve res in listaReservas)
-            {
-                infoBox.Items.Add("hola");
-                if (res.IdReserve.ToString() == ListBox1.SelectedItem.Value)
-                {
-                    dt = ws.dataClient(res.IdClient);
-                    infoBox.Text += res.IdClient.ToString();
-                }
-            }
-            */
-        }
+        {}
 
-        protected void deleteTxBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        protected void deleteTxBox_TextChanged(object sender, EventArgs e) { }
 
         protected void btnAddClient_Click(object sender, EventArgs e)
         {
@@ -167,6 +166,14 @@ namespace WebApplication1
             int idn = Int32.Parse(clientIdn.Text);
 
             ws.addClient(idn, name, pass, sur, card);
+        }
+
+        protected void clearModify_Click(object sender, EventArgs e)
+        {
+            modArrivalDate.Text = "";
+            modFinishDate.Text = "";
+            modTypeRoom.Text = "";
+            inputModify.Text = "";
         }
     }
 }
