@@ -18,6 +18,7 @@ namespace WebApplication1
         String id;
         protected void Page_Load(object sender, EventArgs e)
         {
+            ListBox1.Items.Clear();
             listaReservas = new List<Reserve>();
             ws = new WebService1();
             //recibir lo que has enviat en el boto del login client en el redirect
@@ -66,7 +67,31 @@ namespace WebApplication1
 
         protected void btnAddReserve_Click(object sender, EventArgs e)
         {
+             
+            string name = clientName.Text;
+            string pass = clientPassword.Text;
+            string sur = clientSurname.Text;
+            int card = Int32.Parse(clientCard.Text);
+            int idn = Int32.Parse(clientIdn.Text);
 
+            int idClient = 0;
+            string arrivaldate = arrivalDate.Text;
+            string finishDate = finishdate.Text;
+            string typeRoom = typeroom.Text;
+
+            ws.addClient(idn, name, pass, sur, card);
+            dt = ws.searchClientWithName(name);
+            foreach(DataRow dr in dt.Rows)
+            {
+                if(name == dr["name"].ToString())
+                {
+                    idClient = Int32.Parse(dr["id"].ToString());
+                }
+            }
+
+            ws.addReserve(Int32.Parse(this.id), idClient, arrivaldate, finishDate, typeRoom);
+
+          
         }
 
         protected void btnDeleteReserve_Click(object sender, EventArgs e)
@@ -74,6 +99,7 @@ namespace WebApplication1
 
             string idToDelete = deleteTxBox.Text;
             ws.deleteReserve(Int32.Parse(idToDelete));
+
             ListBox1.Items.Clear();
 
             string reserveString = "";
@@ -130,6 +156,17 @@ namespace WebApplication1
         protected void deleteTxBox_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void btnAddClient_Click(object sender, EventArgs e)
+        {
+            string name = clientName.Text;
+            string pass = clientPassword.Text;
+            string sur = clientSurname.Text;
+            int card = Int32.Parse(clientCard.Text);
+            int idn = Int32.Parse(clientIdn.Text);
+
+            ws.addClient(idn, name, pass, sur, card);
         }
     }
 }

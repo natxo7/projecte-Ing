@@ -46,6 +46,12 @@ namespace WebApplication1.localhost {
         
         private System.Threading.SendOrPostCallback deleteReserveOperationCompleted;
         
+        private System.Threading.SendOrPostCallback addReserveOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback addClientOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback searchClientWithNameOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -107,6 +113,15 @@ namespace WebApplication1.localhost {
         
         /// <remarks/>
         public event deleteReserveCompletedEventHandler deleteReserveCompleted;
+        
+        /// <remarks/>
+        public event addReserveCompletedEventHandler addReserveCompleted;
+        
+        /// <remarks/>
+        public event addClientCompletedEventHandler addClientCompleted;
+        
+        /// <remarks/>
+        public event searchClientWithNameCompletedEventHandler searchClientWithNameCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/HelloWorld", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -344,6 +359,107 @@ namespace WebApplication1.localhost {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/addReserve", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void addReserve(int idRecepcionist, int idClient, string arrivalDate, string finishDate, string typeRoom) {
+            this.Invoke("addReserve", new object[] {
+                        idRecepcionist,
+                        idClient,
+                        arrivalDate,
+                        finishDate,
+                        typeRoom});
+        }
+        
+        /// <remarks/>
+        public void addReserveAsync(int idRecepcionist, int idClient, string arrivalDate, string finishDate, string typeRoom) {
+            this.addReserveAsync(idRecepcionist, idClient, arrivalDate, finishDate, typeRoom, null);
+        }
+        
+        /// <remarks/>
+        public void addReserveAsync(int idRecepcionist, int idClient, string arrivalDate, string finishDate, string typeRoom, object userState) {
+            if ((this.addReserveOperationCompleted == null)) {
+                this.addReserveOperationCompleted = new System.Threading.SendOrPostCallback(this.OnaddReserveOperationCompleted);
+            }
+            this.InvokeAsync("addReserve", new object[] {
+                        idRecepcionist,
+                        idClient,
+                        arrivalDate,
+                        finishDate,
+                        typeRoom}, this.addReserveOperationCompleted, userState);
+        }
+        
+        private void OnaddReserveOperationCompleted(object arg) {
+            if ((this.addReserveCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.addReserveCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/addClient", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void addClient(int idnClient, string nameClient, string passClient, string surname, int creditCard) {
+            this.Invoke("addClient", new object[] {
+                        idnClient,
+                        nameClient,
+                        passClient,
+                        surname,
+                        creditCard});
+        }
+        
+        /// <remarks/>
+        public void addClientAsync(int idnClient, string nameClient, string passClient, string surname, int creditCard) {
+            this.addClientAsync(idnClient, nameClient, passClient, surname, creditCard, null);
+        }
+        
+        /// <remarks/>
+        public void addClientAsync(int idnClient, string nameClient, string passClient, string surname, int creditCard, object userState) {
+            if ((this.addClientOperationCompleted == null)) {
+                this.addClientOperationCompleted = new System.Threading.SendOrPostCallback(this.OnaddClientOperationCompleted);
+            }
+            this.InvokeAsync("addClient", new object[] {
+                        idnClient,
+                        nameClient,
+                        passClient,
+                        surname,
+                        creditCard}, this.addClientOperationCompleted, userState);
+        }
+        
+        private void OnaddClientOperationCompleted(object arg) {
+            if ((this.addClientCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.addClientCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/searchClientWithName", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataTable searchClientWithName(string name) {
+            object[] results = this.Invoke("searchClientWithName", new object[] {
+                        name});
+            return ((System.Data.DataTable)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void searchClientWithNameAsync(string name) {
+            this.searchClientWithNameAsync(name, null);
+        }
+        
+        /// <remarks/>
+        public void searchClientWithNameAsync(string name, object userState) {
+            if ((this.searchClientWithNameOperationCompleted == null)) {
+                this.searchClientWithNameOperationCompleted = new System.Threading.SendOrPostCallback(this.OnsearchClientWithNameOperationCompleted);
+            }
+            this.InvokeAsync("searchClientWithName", new object[] {
+                        name}, this.searchClientWithNameOperationCompleted, userState);
+        }
+        
+        private void OnsearchClientWithNameOperationCompleted(object arg) {
+            if ((this.searchClientWithNameCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.searchClientWithNameCompleted(this, new searchClientWithNameCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -547,6 +663,40 @@ namespace WebApplication1.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
     public delegate void deleteReserveCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void addReserveCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void addClientCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    public delegate void searchClientWithNameCompletedEventHandler(object sender, searchClientWithNameCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.4084.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class searchClientWithNameCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal searchClientWithNameCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataTable Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataTable)(this.results[0]));
+            }
+        }
+    }
 }
 
 #pragma warning restore 1591

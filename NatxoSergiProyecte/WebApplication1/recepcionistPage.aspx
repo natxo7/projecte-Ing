@@ -22,6 +22,8 @@
          <br />
          <br />
         <asp:Button ID="btnAddReserve" runat="server" Text="Add Reserve" OnClick="btnAddReserve_Click" />
+        <asp:Button ID="btnAddClient" runat="server" Text="Add Client" OnClick="btnAddClient_Click" style="height: 29px"  />
+
         <asp:Button ID="btnDeleteReserve" runat="server" Text="Delete Reserve" OnClick="btnDeleteReserve_Click" />
         <asp:TextBox ID="deleteTxBox" runat="server" OnTextChanged="deleteTxBox_TextChanged"></asp:TextBox>
         <asp:Button ID="btnModifyReserve" runat="server" Text="Modify Reserve" OnClick="btnModifyReserve_Click" />
@@ -32,6 +34,16 @@
         <asp:Label ID="Label6" runat="server" Text="">Apellidos del recepcionista</asp:Label>
         <br />
         <br />
+        <asp:TextBox ID="clientName" runat="server"></asp:TextBox>
+        <asp:TextBox ID="clientSurname" runat="server"></asp:TextBox>
+        <asp:TextBox ID="clientIdn" runat="server"></asp:TextBox>
+        <asp:TextBox ID="clientPassword" runat="server"></asp:TextBox>
+        <asp:TextBox ID="clientCard" runat="server"></asp:TextBox>
+
+        <asp:TextBox ID="arrivalDate" runat="server"></asp:TextBox>
+        <asp:TextBox ID="finishdate" runat="server"></asp:TextBox>
+        <asp:TextBox ID="typeroom" runat="server"></asp:TextBox>
+
         <br />
         <br />
                 

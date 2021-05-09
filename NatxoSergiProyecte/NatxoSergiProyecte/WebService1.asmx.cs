@@ -157,7 +157,7 @@ namespace NatxoSergiProyecte
         [WebMethod]
         public void deleteReserve(int id)
         {
-            //DataTable dt = new DataTable();
+           
 
             SQLiteConnection conn = new SQLiteConnection("Data Source=" + DBpath + ";Version=3;");
 
@@ -174,6 +174,86 @@ namespace NatxoSergiProyecte
             }
         }
 
+        [WebMethod]
+        public void addReserve(int idRecepcionist,int idClient , string arrivalDate , string finishDate , string typeRoom)
+        {
+            SQLiteConnection conn = new SQLiteConnection("Data Source=" + DBpath + ";Version=3;");
 
+            conn.Open();
+            using (conn)
+            {
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter();
+
+                SQLiteCommand comm = new SQLiteCommand("INSERT INTO reserve(idRecepcionist,idClient,arrivaldate,finishdate,typeRoom)VALUES('" + idRecepcionist + "','" + idClient + "','" + arrivalDate + "','" + finishDate + "','" + typeRoom + "')", conn);
+
+                try
+                {
+                    adapter.InsertCommand = comm;
+                    adapter.InsertCommand.ExecuteNonQuery();
+                }
+                catch
+                {
+                    Console.WriteLine("Insertion of reserve failed");
+                }
+
+
+
+            }
+        }
+
+        [WebMethod]
+        public void addClient(int idnClient, string nameClient, string passClient ,string surname, int creditCard)
+        {
+            SQLiteConnection conn = new SQLiteConnection("Data Source=" + DBpath + ";Version=3;");
+
+            conn.Open();
+            using (conn)
+            {
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter();
+
+                SQLiteCommand comm = new SQLiteCommand("INSERT INTO Client(idn,name,password,surname,creditCard)VALUES('" + idnClient +"','"+ nameClient+ "','" + passClient+ "','"+ surname+"','" + creditCard + "')", conn);
+                
+                try
+                {
+                    adapter.InsertCommand = comm;
+                    adapter.InsertCommand.ExecuteNonQuery();
+                }
+                catch
+                {
+                    Console.WriteLine("Insertion of client failed");
+                }
+                
+                
+
+            }
+        }
+
+        [WebMethod]
+        public DataTable searchClientWithName(string name)
+        {
+            int id = 0;
+
+
+            DataTable dt = new DataTable();
+
+            SQLiteConnection conn = new SQLiteConnection("Data Source=" + DBpath + ";Version=3;");
+
+            conn.Open();
+            using (conn)
+            {
+                SQLiteCommand comm;
+                
+                    comm = new SQLiteCommand("SELECT * FROM Client WHERE name ='" + name + "'", conn);
+                
+                
+                   
+                
+                SQLiteDataReader reader = comm.ExecuteReader();
+                dt.Load(reader);
+                reader.Close();
+            }
+            
+            return dt;
+        }
     }
 }

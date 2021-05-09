@@ -151,6 +151,55 @@
       <s:element name="deleteReserveResponse">
         <s:complexType />
       </s:element>
+      <s:element name="addReserve">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idRecepcionist" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="idClient" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="arrivalDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="finishDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="typeRoom" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addReserveResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="addClient">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idnClient" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="nameClient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="passClient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="surname" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="creditCard" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="addClientResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="searchClientWithName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="searchClientWithNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="searchClientWithNameResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="HelloWorldSoapIn">
@@ -201,6 +250,24 @@
   <wsdl:message name="deleteReserveSoapOut">
     <wsdl:part name="parameters" element="tns:deleteReserveResponse" />
   </wsdl:message>
+  <wsdl:message name="addReserveSoapIn">
+    <wsdl:part name="parameters" element="tns:addReserve" />
+  </wsdl:message>
+  <wsdl:message name="addReserveSoapOut">
+    <wsdl:part name="parameters" element="tns:addReserveResponse" />
+  </wsdl:message>
+  <wsdl:message name="addClientSoapIn">
+    <wsdl:part name="parameters" element="tns:addClient" />
+  </wsdl:message>
+  <wsdl:message name="addClientSoapOut">
+    <wsdl:part name="parameters" element="tns:addClientResponse" />
+  </wsdl:message>
+  <wsdl:message name="searchClientWithNameSoapIn">
+    <wsdl:part name="parameters" element="tns:searchClientWithName" />
+  </wsdl:message>
+  <wsdl:message name="searchClientWithNameSoapOut">
+    <wsdl:part name="parameters" element="tns:searchClientWithNameResponse" />
+  </wsdl:message>
   <wsdl:portType name="WebService1Soap">
     <wsdl:operation name="HelloWorld">
       <wsdl:input message="tns:HelloWorldSoapIn" />
@@ -233,6 +300,18 @@
     <wsdl:operation name="deleteReserve">
       <wsdl:input message="tns:deleteReserveSoapIn" />
       <wsdl:output message="tns:deleteReserveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="addReserve">
+      <wsdl:input message="tns:addReserveSoapIn" />
+      <wsdl:output message="tns:addReserveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="addClient">
+      <wsdl:input message="tns:addClientSoapIn" />
+      <wsdl:output message="tns:addClientSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="searchClientWithName">
+      <wsdl:input message="tns:searchClientWithNameSoapIn" />
+      <wsdl:output message="tns:searchClientWithNameSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WebService1Soap" type="tns:WebService1Soap">
@@ -309,6 +388,33 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="addReserve">
+      <soap:operation soapAction="http://tempuri.org/addReserve" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addClient">
+      <soap:operation soapAction="http://tempuri.org/addClient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchClientWithName">
+      <soap:operation soapAction="http://tempuri.org/searchClientWithName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="WebService1Soap12" type="tns:WebService1Soap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -377,6 +483,33 @@
     </wsdl:operation>
     <wsdl:operation name="deleteReserve">
       <soap12:operation soapAction="http://tempuri.org/deleteReserve" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addReserve">
+      <soap12:operation soapAction="http://tempuri.org/addReserve" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addClient">
+      <soap12:operation soapAction="http://tempuri.org/addClient" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchClientWithName">
+      <soap12:operation soapAction="http://tempuri.org/searchClientWithName" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

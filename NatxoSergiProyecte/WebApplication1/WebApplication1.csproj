@@ -144,10 +144,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="https://localhost:44372/WebService1.asmx%3fop=deleteReserve">
+    <WebReferenceUrl Include="https://localhost:44372/WebService1.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\localhost\</RelPath>
-      <UpdateFromURL>https://localhost:44372/WebService1.asmx%3fop=deleteReserve</UpdateFromURL>
+      <UpdateFromURL>https://localhost:44372/WebService1.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
