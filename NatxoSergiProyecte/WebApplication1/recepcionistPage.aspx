@@ -9,7 +9,9 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div> <asp:Label ID="Label1" runat="server" Text="">Nombre del recepcionista:</asp:Label>
+    
+      
+            <div> <asp:Label ID="Label1" runat="server" Text="">Nombre del recepcionista:</asp:Label>
           <br />
           <asp:Label ID="Label4" runat="server" Text="">dato nombre</asp:Label>
           <br />
@@ -46,7 +48,7 @@
 
         <br />
         <br />
-                
+        </div>      
         
     </form>
 </body>
