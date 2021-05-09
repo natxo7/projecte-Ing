@@ -48,6 +48,7 @@
         <asp:Button ID="clearModify" runat="server" Text="Clear" OnClick="clearModify_Click"  />
         <br />
         
+        <asp:TextBox ID="modIdn" runat="server"></asp:TextBox>
         <asp:TextBox ID="modArrivalDate" runat="server"></asp:TextBox>
         <asp:TextBox ID="modFinishDate" runat="server"></asp:TextBox>
         <asp:TextBox ID="modTypeRoom" runat="server"></asp:TextBox>

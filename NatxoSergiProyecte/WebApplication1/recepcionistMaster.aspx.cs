@@ -11,22 +11,25 @@ namespace WebApplication1
 {
     public partial class recepcionistMaster : System.Web.UI.Page
     {
-        public DataTable dt = new DataTable();
+        public DataTable datosRecepcionista = new DataTable();
+        public DataTable datosCliente = new DataTable();
+        public DataTable dtR = new DataTable();
+       
         public string DBpath = HttpRuntime.AppDomainAppPath + "basedatos.db";
         public WebService1 ws;
         public List<Reserve> listaReservas;
-        String id;
+        private String id;
         protected void Page_Load(object sender, EventArgs e)
         {
             ListBox1.Items.Clear();
             listaReservas = new List<Reserve>();
             ws = new WebService1();
-            //recibir lo que has enviat en el boto del login client en el redirect
+            
             this.id = String.IsNullOrEmpty(Request.QueryString["id"]) ? "" : Request.QueryString["id"].ToString();
 
-            dt = ws.dataRecepcionist(Int32.Parse(id));
+            datosRecepcionista = ws.dataRecepcionist(Int32.Parse(id));
 
-            foreach (DataRow dr in dt.Rows)
+            foreach (DataRow dr in datosRecepcionista.Rows)
             {
                 Label4.Text = dr["name"].ToString();
 
@@ -34,30 +37,17 @@ namespace WebApplication1
 
             }
 
-            dt = ws.dataReserve(Int32.Parse(id), 1);
+            dtR = ws.dataReserve(Int32.Parse(id), 1);
             String reserveString;
 
-            foreach (DataRow dr in dt.Rows)
+            foreach (DataRow dr in dtR.Rows)
             {
                 reserveString = "";
-                dt = ws.dataClient(Int32.Parse(dr["idRecepcionist"].ToString()));
-                foreach (DataRow dr1 in dt.Rows)
-                {
-
-                    reserveString = "Id Reserve: " + dr["id"].ToString();
-                    reserveString += " Client Name: " + dr1["name"].ToString() + "\t";
-                    //ListBox1.Items.Add(dr1["name"].ToString());
-
-                    Reserve reserve = new Reserve(Int32.Parse(dr["id"].ToString()), Int32.Parse(dr["idRecepcionist"].ToString()), Int32.Parse(dr["idClient"].ToString()), dr["arrivaldate"].ToString(), dr["finishdate"].ToString(), dr["typeRoom"].ToString());
-                    listaReservas.Add(reserve);
-
-                }
-
-
+                reserveString = "Reserve id: " + dr["id"].ToString();
+                reserveString += "IDN Client: " + dr["idnClient"].ToString();
                 reserveString += " Arrival Date: " + dr["arrivaldate"].ToString() + "\t";
                 reserveString += " Finish Date: " + dr["finishdate"].ToString() + "\t";
                 reserveString += " Type Room: " + dr["typeRoom"].ToString() + "\t";
-
 
                 ListBox1.Items.Add(reserveString);
             }
@@ -67,30 +57,26 @@ namespace WebApplication1
 
         protected void btnAddReserve_Click(object sender, EventArgs e)
         {
-
+            
+            int idn = Int32.Parse(clientIdn.Text);
             string name = clientName.Text;
             string pass = clientPassword.Text;
             string sur = clientSurname.Text;
             int card = Int32.Parse(clientCard.Text);
-            int idn = Int32.Parse(clientIdn.Text);
+            int idRecepcionist = Int32.Parse(id);
+            
 
-            int idClient = 0;
+            
             string arrivaldate = arrivalDate.Text;
             string finishDate = finishdate.Text;
             string typeRoom = typeroom.Text;
 
             ws.addClient(idn, name, pass, sur, card);
-            dt = ws.searchClientWithName(name);
-            foreach (DataRow dr in dt.Rows)
-            {
-                if (name == dr["name"].ToString())
-                {
-                    idClient = Int32.Parse(dr["id"].ToString());
-                }
-            }
-            ws.addReserve(Int32.Parse(this.id), idClient, arrivaldate, finishDate, typeRoom);
             
             
+            ws.addReserve(idRecepcionist, idn, arrivaldate, finishDate, typeRoom);
+            Page_Load(this, null);
+
 
             
 
@@ -99,56 +85,27 @@ namespace WebApplication1
 
         protected void btnDeleteReserve_Click(object sender, EventArgs e)
         {
-
+            
             string idToDelete = deleteTxBox.Text;
             ws.deleteReserve(Int32.Parse(idToDelete));
-
             ListBox1.Items.Clear();
-
-            string reserveString = "";
-            dt = ws.dataReserve(Int32.Parse(id), 1);
-
-
-            foreach (DataRow dr in dt.Rows)
-            {
-                reserveString = "";
-                dt = ws.dataClient(Int32.Parse(dr["idRecepcionist"].ToString()));
-                foreach (DataRow dr1 in dt.Rows)
-                {
-
-                    reserveString = "Id Reserve: " + dr["id"].ToString();
-                    reserveString += " Client Name: " + dr1["name"].ToString() + "\t";
-                    //ListBox1.Items.Add(dr1["name"].ToString());
-
-                    Reserve reserve = new Reserve(Int32.Parse(dr["id"].ToString()), Int32.Parse(dr["idRecepcionist"].ToString()), Int32.Parse(dr["idClient"].ToString()), dr["arrivaldate"].ToString(), dr["finishdate"].ToString(), dr["typeRoom"].ToString());
-                    listaReservas.Add(reserve);
-
-                }
-
-
-                reserveString += " Arrival Date: " + dr["arrivaldate"].ToString() + "\t";
-                reserveString += " Finish Date: " + dr["finishdate"].ToString() + "\t";
-                reserveString += " Type Room: " + dr["typeRoom"].ToString() + "\t";
-
-
-                ListBox1.Items.Add(reserveString);
-            }
-
+            Page_Load(this, null);
+           
         }
 
         protected void btnModifyReserve_Click(object sender, EventArgs e)
         {
+            
             int idReserve = Int32.Parse(inputModify.Text);
-            int idClient = -1;
-            int idRecepcionist = -1;
-            dt = ws.dataReserve(Int32.Parse(id), 1);
-            foreach(DataRow dr in dt.Rows)
-            {
-                 idClient = Int32.Parse(dr["idClient"].ToString());
-                 idRecepcionist = Int32.Parse(dr["idRecepcionist"].ToString());
-            }
-            ws.deleteReserve(Int32.Parse(idReserve.ToString()));
-            ws.addReserve(idRecepcionist, idClient, modArrivalDate.Text, modFinishDate.Text, modTypeRoom.Text);
+            int idnClient =Int32.Parse(modIdn.Text);
+            string arrivalDate = modArrivalDate.Text;
+            string finishdate = modFinishDate.Text;
+            string typeRoom = modTypeRoom.Text;
+
+            ws.modifyReserve(idReserve, idnClient, arrivalDate, finishdate, typeRoom);
+            clearModifyTextbox();
+            Page_Load(this, null);
+
 
         }
 
@@ -170,6 +127,12 @@ namespace WebApplication1
 
         protected void clearModify_Click(object sender, EventArgs e)
         {
+            clearModifyTextbox();
+        }
+
+        public void clearModifyTextbox()
+        {
+            modIdn.Text = "";
             modArrivalDate.Text = "";
             modFinishDate.Text = "";
             modTypeRoom.Text = "";

@@ -175,7 +175,7 @@ namespace NatxoSergiProyecte
         }
 
         [WebMethod]
-        public void addReserve(int idRecepcionist,int idClient , string arrivalDate , string finishDate , string typeRoom)
+        public void addReserve(int idRecepcionist,int idnClient , string arrivalDate , string finishDate , string typeRoom)
         {
             SQLiteConnection conn = new SQLiteConnection("Data Source=" + DBpath + ";Version=3;");
 
@@ -184,7 +184,7 @@ namespace NatxoSergiProyecte
             {
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter();
 
-                SQLiteCommand comm = new SQLiteCommand("INSERT INTO reserve(idRecepcionist,idClient,arrivaldate,finishdate,typeRoom)VALUES('" + idRecepcionist + "','" + idClient + "','" + arrivalDate + "','" + finishDate + "','" + typeRoom + "')", conn);
+                SQLiteCommand comm = new SQLiteCommand("INSERT INTO reserve(idRecepcionist,idnClient,arrivaldate,finishdate,typeRoom)VALUES('" + idRecepcionist + "','" + idnClient + "','" + arrivalDate + "','" + finishDate + "','" + typeRoom + "')", conn);
 
                 try
                 {
@@ -254,6 +254,51 @@ namespace NatxoSergiProyecte
             }
             
             return dt;
+        }
+
+        [WebMethod]
+        public DataTable getClientByRecepcionist(int idRecepcionist)
+        {
+            DataTable dt = new DataTable();
+
+            SQLiteConnection conn = new SQLiteConnection("Data Source=" + DBpath + ";Version=3;");
+
+            conn.Open();
+            using (conn)
+            {
+                SQLiteCommand comm = new SQLiteCommand("SELECT * FROM Client WHERE idRecepcionist ='" + idRecepcionist + "'", conn);
+                SQLiteDataReader reader = comm.ExecuteReader();
+                dt.Load(reader);
+                reader.Close();
+            }
+            return dt;
+        }
+
+        [WebMethod]
+        public void modifyReserve(int reserve,int idnClient , string arrivalDate, string finishdate , string typeRoom)
+        {
+            SQLiteConnection conn = new SQLiteConnection("Data Source=" + DBpath + ";Version=3;");
+
+            conn.Open();
+            using (conn)
+            {
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter();
+
+                SQLiteCommand comm = new SQLiteCommand("UPDATE reserve SET idnClient = '"+idnClient+"',arrivaldate = '"+arrivalDate+ "',finishdate = '" + finishdate + "',typeRoom = '" + typeRoom + "'  WHERE id = " + reserve+"; ", conn);
+
+                try
+                {
+                    adapter.UpdateCommand = comm;
+                    adapter.UpdateCommand.ExecuteNonQuery();
+                }
+                catch
+                {
+                    Console.WriteLine("Update of client failed");
+                }
+
+
+
+            }
         }
     }
 }
