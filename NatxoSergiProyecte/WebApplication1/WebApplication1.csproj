@@ -73,31 +73,33 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="clientMaster.aspx" />
+    <Content Include="Client\clientMaster.aspx" />
     <Content Include="homeMaster.aspx" />
     <Content Include="img\back.jpg" />
     <Content Include="img\fondo.jpg" />
     <Content Include="logMaster.aspx" />
-    <Content Include="recepcionistMaster.aspx" />
+    <Content Include="Recepcionist\recepcionistMaster.aspx" />
+    <Content Include="Client\Web.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Content Include="css\StyleSheet1.css" />
     <Content Include="Site1.Master" />
-    <None Include="Web References\localhost\Reference.map">
+    <Content Include="Recepcionist\Web.config" />
+    <Content Include="Web References\localhost\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
+    </Content>
     <None Include="Web References\localhost\WebService1.disco" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="clientMaster.aspx.cs">
+    <Compile Include="Client\clientMaster.aspx.cs">
       <DependentUpon>clientMaster.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="clientMaster.aspx.designer.cs">
+    <Compile Include="Client\clientMaster.aspx.designer.cs">
       <DependentUpon>clientMaster.aspx</DependentUpon>
     </Compile>
     <Compile Include="homeMaster.aspx.cs">
@@ -120,11 +122,11 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="recepcionistMaster.aspx.cs">
+    <Compile Include="Recepcionist\recepcionistMaster.aspx.cs">
       <DependentUpon>recepcionistMaster.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="recepcionistMaster.aspx.designer.cs">
+    <Compile Include="Recepcionist\recepcionistMaster.aspx.designer.cs">
       <DependentUpon>recepcionistMaster.aspx</DependentUpon>
     </Compile>
     <Compile Include="Reserve.cs" />

@@ -5,6 +5,7 @@ using System.Text;
 using System.Web;
 using System.Web.Security;
 using WebApplication1.localhost;
+using System.Web.Security;
 
 namespace WebApplication1
 {
@@ -49,8 +50,10 @@ namespace WebApplication1
                         string passHash = dr["password"].ToString().ToUpper();
                         if (pass == passHash)
                         {
-                            FormsAuthentication.SetAuthCookie(user, true);
-                            Response.Redirect("./clientMaster.aspx?id=" + dr["id"].ToString());
+                            FormsAuthentication.SetAuthCookie("user", true);
+                            Session["clientId"] = dr["id"];
+                            Response.Redirect("Client/clientMaster.aspx");
+                            //Response.Redirect("./clientMaster.aspx?id=" + dr["id"].ToString());
 
                         }
                     }
@@ -79,7 +82,7 @@ namespace WebApplication1
                     string passHash = dr["password"].ToString().ToUpper();
                     if (pass.ToString().ToUpper() == passHash)
                     {
-                        FormsAuthentication.SetAuthCookie(user, true);
+                        FormsAuthentication.SetAuthCookie("admin", true);
 
                         if (dr["rol"].ToString() == "1")
                         {
@@ -89,8 +92,9 @@ namespace WebApplication1
                         }
                         else
                         {
-                            Response.Redirect("./recepcionistMaster.aspx?id=" + dr["id"].ToString());
-
+                            //Response.Redirect("./recepcionistMaster.aspx?id=" + dr["id"].ToString());
+                            Session["recepcionistId"] = dr["id"];
+                            Response.Redirect("Recepcionist/recepcionistMaster.aspx");
                         }
                     }
                 }
