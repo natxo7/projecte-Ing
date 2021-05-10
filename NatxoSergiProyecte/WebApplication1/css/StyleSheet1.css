@@ -88,7 +88,7 @@ li a:hover {
     background-color:aqua;
     
 }
-
+/*LOGIN*/
 .container-login{
     display:flex;
     flex-direction:row;
@@ -109,4 +109,92 @@ li a:hover {
 
 .txt-user-login{
     font-weight:bold;
+}
+/* CLIENT*/
+
+.containerClientPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:lightcyan;
+}
+.clientcontainerDiv {
+    display: flex;
+    flex-direction: column;
+    background-color: orangered;
+    padding: 20px;
+    border: solid 1px;
+    margin: 50px;
+    text-align: center;
+    font-weight: bold;
+    border-radius:10px;
+    background-color:lightgrey;
+}
+.infolistboxUser {
+    padding-top: 30px;
+   
+}
+
+/*Recepcionist Page*/
+.containerRecepcionistPage{
+    background-color:lightblue;
+}
+.divInfoRecepcionist {
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+    padding: 20px;
+}
+.containerListBoxRecepcionist{
+    display:flex;
+    justify-content:center;
+    
+}
+.divsOperations{
+    display:flex;
+    
+}
+.buttonAddReserveDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    width:33%;
+}
+.inputFieldsAdd {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.buttonDeleteReserveDiv {
+    width: 33%;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.fieldsDelete{
+    flex-direction:row;
+    margin-top:20px;
+}
+.buttonModifyDiv {
+    width: 33%;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.exportDiv{
+    
+    display:flex;
+    text-align:center;
+    font-weight:bold;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+   padding:30px;
+}
+.labelExport{
+    margin:10px;
 }
