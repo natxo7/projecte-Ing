@@ -81,7 +81,7 @@ namespace WebApplication1
                 string finishDate = finishdate.Text;
                 string typeRoom = typeroom.Text;
 
-                ws.addClient(idn, name, pass, sur, card);
+                ws.addClient(idn, name, pass, sur, card,idRecepcionist);
 
 
                 ws.addReserve(idRecepcionist, idn, arrivaldate, finishDate, typeRoom);
@@ -149,16 +149,7 @@ namespace WebApplication1
 
         protected void deleteTxBox_TextChanged(object sender, EventArgs e) { }
 
-        protected void btnAddClient_Click(object sender, EventArgs e)
-        {
-            string name = clientName.Text;
-            string pass = clientPassword.Text;
-            string sur = clientSurname.Text;
-            int card = Int32.Parse(clientCard.Text);
-            int idn = Int32.Parse(clientIdn.Text);
-
-            ws.addClient(idn, name, pass, sur, card);
-        }
+        
 
         protected void clearModify_Click(object sender, EventArgs e)
         {

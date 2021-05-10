@@ -173,6 +173,7 @@
             <s:element minOccurs="0" maxOccurs="1" name="passClient" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="surname" type="s:string" />
             <s:element minOccurs="1" maxOccurs="1" name="creditCard" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="idRecepcionist" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>

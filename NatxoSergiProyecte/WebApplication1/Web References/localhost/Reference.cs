@@ -406,22 +406,23 @@ namespace WebApplication1.localhost {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/addClient", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void addClient(int idnClient, string nameClient, string passClient, string surname, int creditCard) {
+        public void addClient(int idnClient, string nameClient, string passClient, string surname, int creditCard, int idRecepcionist) {
             this.Invoke("addClient", new object[] {
                         idnClient,
                         nameClient,
                         passClient,
                         surname,
-                        creditCard});
+                        creditCard,
+                        idRecepcionist});
         }
         
         /// <remarks/>
-        public void addClientAsync(int idnClient, string nameClient, string passClient, string surname, int creditCard) {
-            this.addClientAsync(idnClient, nameClient, passClient, surname, creditCard, null);
+        public void addClientAsync(int idnClient, string nameClient, string passClient, string surname, int creditCard, int idRecepcionist) {
+            this.addClientAsync(idnClient, nameClient, passClient, surname, creditCard, idRecepcionist, null);
         }
         
         /// <remarks/>
-        public void addClientAsync(int idnClient, string nameClient, string passClient, string surname, int creditCard, object userState) {
+        public void addClientAsync(int idnClient, string nameClient, string passClient, string surname, int creditCard, int idRecepcionist, object userState) {
             if ((this.addClientOperationCompleted == null)) {
                 this.addClientOperationCompleted = new System.Threading.SendOrPostCallback(this.OnaddClientOperationCompleted);
             }
@@ -430,7 +431,8 @@ namespace WebApplication1.localhost {
                         nameClient,
                         passClient,
                         surname,
-                        creditCard}, this.addClientOperationCompleted, userState);
+                        creditCard,
+                        idRecepcionist}, this.addClientOperationCompleted, userState);
         }
         
         private void OnaddClientOperationCompleted(object arg) {

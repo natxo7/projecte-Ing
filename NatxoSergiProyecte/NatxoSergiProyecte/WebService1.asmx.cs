@@ -202,7 +202,7 @@ namespace NatxoSergiProyecte
         }
 
         [WebMethod]
-        public void addClient(int idnClient, string nameClient, string passClient ,string surname, int creditCard)
+        public void addClient(int idnClient, string nameClient, string passClient ,string surname, int creditCard , int idRecepcionist)
         {
             SQLiteConnection conn = new SQLiteConnection("Data Source=" + DBpath + ";Version=3;");
 
@@ -211,7 +211,7 @@ namespace NatxoSergiProyecte
             {
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter();
 
-                SQLiteCommand comm = new SQLiteCommand("INSERT INTO Client(idn,name,password,surname,creditCard)VALUES('" + idnClient +"','"+ nameClient+ "','" + passClient+ "','"+ surname+"','" + creditCard + "')", conn);
+                SQLiteCommand comm = new SQLiteCommand("INSERT INTO Client(idn,name,password,surname,creditCard,idRecepcionist)VALUES('" + idnClient +"','"+ nameClient+ "','" + passClient+ "','"+ surname+"','" + creditCard + "','" + idRecepcionist + "')", conn);
                 
                 try
                 {
