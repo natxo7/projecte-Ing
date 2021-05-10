@@ -122,7 +122,7 @@
       <s:element name="dataReserve">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="number" type="s:int" />
             <s:element minOccurs="1" maxOccurs="1" name="role" type="s:int" />
           </s:sequence>
         </s:complexType>

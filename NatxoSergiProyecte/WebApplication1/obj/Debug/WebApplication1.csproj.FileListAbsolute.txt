@@ -181,3 +181,5 @@ C:\Users\Sergi\Desktop\ProjecteIngles\projecte-Ing\NatxoSergiProyecte\WebApplica
 C:\Users\Sergi\Desktop\ProjecteIngles\projecte-Ing\NatxoSergiProyecte\WebApplication1\obj\Debug\WebApplication1.pdb
 C:\Users\Sergi\Desktop\ProjecteIngles\projecte-Ing\NatxoSergiProyecte\WebApplication1\bin\Newtonsoft.Json.dll
 C:\Users\Sergi\Desktop\ProjecteIngles\projecte-Ing\NatxoSergiProyecte\WebApplication1\bin\Newtonsoft.Json.xml
+C:\Users\Natxo\Desktop\projecte Ing\NatxoSergiProyecte\WebApplication1\bin\Newtonsoft.Json.dll
+C:\Users\Natxo\Desktop\projecte Ing\NatxoSergiProyecte\WebApplication1\bin\Newtonsoft.Json.xml

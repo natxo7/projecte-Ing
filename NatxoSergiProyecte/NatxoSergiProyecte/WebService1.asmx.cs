@@ -129,7 +129,7 @@ namespace NatxoSergiProyecte
       
 
         [WebMethod]
-        public DataTable dataReserve(int id,int role)
+        public DataTable dataReserve(int number,int role)
         {
 
             DataTable dt = new DataTable();
@@ -141,11 +141,11 @@ namespace NatxoSergiProyecte
             {
                 SQLiteCommand comm;
                 if (role == 0) {
-                   comm= new SQLiteCommand("SELECT * FROM reserve WHERE idClient ='" + id + "'", conn);
+                   comm= new SQLiteCommand("SELECT * FROM reserve WHERE idnClient ='" + number + "'", conn);
                 }
                 else
                 {
-                    comm = new SQLiteCommand("SELECT * FROM reserve WHERE idRecepcionist ='" + id + "'", conn);
+                    comm = new SQLiteCommand("SELECT * FROM reserve WHERE idRecepcionist ='" + number + "'", conn);
                 }
                 SQLiteDataReader reader = comm.ExecuteReader();
                 dt.Load(reader);
@@ -204,6 +204,11 @@ namespace NatxoSergiProyecte
         [WebMethod]
         public void addClient(int idnClient, string nameClient, string passClient ,string surname, int creditCard , int idRecepcionist)
         {
+            using (MD5 md5Hash = MD5.Create())
+            {
+                byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(passClient));
+                passClient = BitConverter.ToString(data).Replace("-", string.Empty);
+            }
             SQLiteConnection conn = new SQLiteConnection("Data Source=" + DBpath + ";Version=3;");
 
             conn.Open();

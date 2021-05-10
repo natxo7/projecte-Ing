@@ -311,25 +311,25 @@ namespace WebApplication1.localhost {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/dataReserve", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public System.Data.DataTable dataReserve(int id, int role) {
+        public System.Data.DataTable dataReserve(int number, int role) {
             object[] results = this.Invoke("dataReserve", new object[] {
-                        id,
+                        number,
                         role});
             return ((System.Data.DataTable)(results[0]));
         }
         
         /// <remarks/>
-        public void dataReserveAsync(int id, int role) {
-            this.dataReserveAsync(id, role, null);
+        public void dataReserveAsync(int number, int role) {
+            this.dataReserveAsync(number, role, null);
         }
         
         /// <remarks/>
-        public void dataReserveAsync(int id, int role, object userState) {
+        public void dataReserveAsync(int number, int role, object userState) {
             if ((this.dataReserveOperationCompleted == null)) {
                 this.dataReserveOperationCompleted = new System.Threading.SendOrPostCallback(this.OndataReserveOperationCompleted);
             }
             this.InvokeAsync("dataReserve", new object[] {
-                        id,
+                        number,
                         role}, this.dataReserveOperationCompleted, userState);
         }
         

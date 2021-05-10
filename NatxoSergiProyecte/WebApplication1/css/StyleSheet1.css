@@ -89,4 +89,24 @@ li a:hover {
     
 }
 
+.container-login{
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+}
+.groupName{
+    padding:20px;
+    background-color:lightcoral;
+    height:200px;
+    margin-right:10px;
+}
+.groupRecepcionist {
+    padding: 20px;
+    background-color:lightblue;
+    height: 200px;
+   margin-left:10px;
+}
 
+.txt-user-login{
+    font-weight:bold;
+}

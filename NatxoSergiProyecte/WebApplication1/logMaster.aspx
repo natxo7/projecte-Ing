@@ -2,8 +2,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     <div class="grid-block" style="background-image: url('/img/fondo.jpg'); background-repeat: no-repeat;background-size: 100%; width: 100%; height: 400px; text-align:center; padding-top:20px;">
+     <div class="container-login " style="background-image: url('/img/fondo.jpg'); background-repeat: no-repeat;background-size: 100%; width: 100%; height: 400px; text-align:center; padding-top:20px;id=content">
         <div class="groupName">
+            <p class="txt-user-login">Login as Client</p>
             <div class="username">
                 <asp:Label ID="Label1" runat="server" Text="Label">Username:</asp:Label>
                 <br />
@@ -21,8 +22,9 @@
         </div>
         <br />
           <div class="groupRecepcionist">
+                <p class="txt-user-login">Login as Recepcionist</p>
             <div class="usernameRec">
-                <asp:Label ID="Label3" runat="server" Text="Label">Recepcionist:</asp:Label>
+                <asp:Label ID="Label3" runat="server" Text="Label">Recepcionist Name:</asp:Label>
                 <br />
                 <asp:TextBox ID="txtBoxNameRecepcionist" runat="server"></asp:TextBox>
             </div>
@@ -39,3 +41,6 @@
         </div>
      </div>
 </asp:Content>
+
+
+

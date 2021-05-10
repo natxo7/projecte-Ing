@@ -22,7 +22,11 @@ namespace WebApplication1
         {
             string user = txtBoxName.Text;
             string pass = txtBoxPass.Text;
-
+            using (MD5 md5Hash = MD5.Create())
+            {
+                byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(pass));
+                pass = BitConverter.ToString(data).Replace("-", string.Empty);
+            }
 
             if (user.Length == 0 || pass.Length == 0)
             {
@@ -39,12 +43,16 @@ namespace WebApplication1
             {
                 if (dr["name"].ToString() == user)
                 {
-
-                    string passHash = dr["password"].ToString().ToUpper();
-                    if (pass.ToString().ToUpper() == passHash)
+                    using (MD5 md5Hash = MD5.Create())
                     {
-                        Response.Redirect("./clientMaster.aspx?id=" + dr["id"].ToString());
 
+                        string passHash = dr["password"].ToString().ToUpper();
+                        if (pass == passHash)
+                        {
+                            FormsAuthentication.SetAuthCookie(user, true);
+                            Response.Redirect("./clientMaster.aspx?id=" + dr["id"].ToString());
+
+                        }
                     }
                 }
             }
